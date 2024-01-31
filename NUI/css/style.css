@@ -1,0 +1,713 @@
+@font-face {
+    font-family: 'pricedown';
+    src: url("../fonts/tokiyo.otf") format('opentype');
+}
+
+
+@font-face {
+    font-family: GilroyBold;
+    src: url(../fonts/Gilroy-ExtraBold.otf);
+  }
+  
+  @font-face {
+    font-family: GilroyMedium;
+    src: url(../fonts/Gilroy-Light.otf);
+  }
+  
+  @font-face {
+    font-family: Acrobat;
+    src: url(../fonts/Akrobat-SemiBold.ttf);
+  }
+
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    min-height: 100vh;
+    min-width: 100vw;
+    overflow: hidden;
+    display: grid;
+    place-items: center;
+    -webkit-user-select: none; /* Safari */
+    -ms-user-select: none; /* IE 10 and IE 11 */
+    user-select: none; /* Standard syntax */
+}
+
+
+.bg {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    filter: brightness(0.5);
+
+    -webkit-user-drag: none;
+    user-select: none;
+}
+
+.wrapper {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+
+
+    grid-template-rows: 80% 0% 10%;
+    display: grid;
+    place-items: center;
+
+}
+
+
+bottom-text {
+    position: fixed;
+    bottom: 0;
+
+    width: 100%;
+    height: 200px;
+    z-index: 2;
+
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.97) 5%, rgba(0, 0, 0, 0.2) 90%, rgba(0,0,0,0) 100%);
+
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+bottom-text .bigTitle {
+    font-family: GilroyBold;
+    font-size: 40px;
+    background: linear-gradient(90.4deg, #1a76ff 0.2%, rgba(26, 99, 255, 0.74) 99.85%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-top: 0.5rem;
+    text-align: center;
+}
+
+bottom-text .littleTitle {
+    position: relative;
+    font-family: GilroyMedium;
+    font-size: 15px;
+    line-height: 25px;
+    letter-spacing: 1px;
+    color: rgba(255,255,255,1);
+    text-align: center;
+}
+
+
+
+card-bottom-text {
+    position: fixed;
+    bottom: 0;
+
+    width: 100%;
+    height: 200px;
+    z-index: 2;
+
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.97) 5%, rgba(0, 0, 0, 0.2) 90%, rgba(0,0,0,0) 100%);
+
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+card-bottom-text .bigTitle {
+    font-family: GilroyBold;
+    font-size: 40px;
+    background: linear-gradient(90.4deg, #1a76ff 0.2%, rgba(26, 99, 255, 0.74) 99.85%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-top: 0.5rem;
+    text-align: center;
+}
+
+card-bottom-text .littleTitle {
+    position: relative;
+    font-family: GilroyMedium;
+    font-size: 15px;
+    line-height: 25px;
+    letter-spacing: 1px;
+    color: rgba(255,255,255,1);
+    text-align: center;
+}
+
+.entry_container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+}
+
+.entry_container > div {
+    position: relative;
+    
+    width: 25vw;
+    height: 70vh;
+    backdrop-filter: blur(10px);
+    border-radius: 10px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    margin: 0 25px;
+    z-index: 2;
+    overflow: hidden;
+}
+
+.entry_container .legal.active {
+    border: 3px solid #5ea9ff;
+    box-shadow: 0 0 50px #5ea9ff;
+
+    transform: perspective(2000px) rotateY(20deg);
+}
+
+
+.entry_container .illegal.active {
+    border: 3px solid #FF1A35;
+    box-shadow: 0 0 50px #FF1A35;
+    transform: perspective(2000px) rotateY(-20deg);
+}
+
+.entry_container > div.active img {
+    height: 70vh;
+}
+
+.entry_container > div img {
+    position: absolute;
+    height: 50vh;
+    bottom: 0;
+    left: 0;
+
+    transition: 0.2s ease-in-out;
+}
+
+.legal {
+    background: linear-gradient(135deg, rgba(26, 152, 255, 0.37) 0%, rgba(255, 26, 53, 0) 100%);
+    border: 1px solid #5ea9ff;
+}
+
+.illegal {
+    background: linear-gradient(135deg, rgba(255, 26, 53, 0.37) 0%, rgba(255, 26, 53, 0) 100%);
+    border: 1px solid #FF1A35;
+}
+
+.entry_container > div:not(.active):hover {
+    width: 30vw;
+}
+
+.entry_container > div:not(.active):hover img {
+    height: 70vh;
+}
+
+
+.continue-application {
+    --color: #fff;
+    --background:linear-gradient(90deg, rgba(44, 0, 0, 0.507) 0%, rgba(0, 52, 110, 0.336) 100%);
+    --background-hover: linear-gradient(90deg, rgba(24, 24, 24, 0.911) 0%, rgb(0, 0, 0) 100%);
+    --background-left: transparent;
+    --folder: #F3E9CB;
+    --folder-inner: #BEB393;
+    --paper: #FFFFFF;
+    --paper-lines: #BBC1E1;
+    --paper-behind: #E1E6F9;
+    --pencil-cap: #fff;
+    --pencil-top: #275EFE;
+    --pencil-middle: #fff;
+    --pencil-bottom: #5C86FF;
+    --shadow: rgba(13, 15, 25, .2);
+    border: none;
+    outline: none;
+    cursor: pointer;
+    position: relative;
+    border-radius: 5px;
+    font-size: 25px;
+    font-weight: 500;
+    -webkit-appearance: none;
+    appearance: none;
+    -webkit-tap-highlight-color: transparent;
+    padding: 1vw 5vw 1vw 3.5vw;
+    transition: background 0.3s;
+    color: var(--color);
+    background: var(--bg, var(--background));
+
+    z-index: 10000;
+  }
+  
+  .continue-application > div {
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 60px;
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    position: absolute;
+    overflow: hidden;
+    border-radius: 5px 0 0 5px;
+    background: var(--background-left);
+  }
+  
+  .continue-application > div .folder {
+    width: 23px;
+    height: 27px;
+    position: relative;
+  }
+  
+  .continue-application > div .folder .top {
+    left: 0;
+    top: 0;
+    z-index: 2;
+    position: absolute;
+    transform: translateX(var(--fx, 0));
+    transition: transform 0.4s ease var(--fd, 0.3s);
+  }
+  
+  .continue-application > div .folder .top svg {
+    width: 24px;
+    height: 27px;
+    display: block;
+    fill: var(--folder);
+    transform-origin: 0 50%;
+    transition: transform 0.3s ease var(--fds, 0.45s);
+    transform: perspective(120px) rotateY(var(--fr, 0deg));
+  }
+  
+  .continue-application > div .folder:before, .continue-application > div .folder:after,
+  .continue-application > div .folder .paper {
+    content: "";
+    position: absolute;
+    left: var(--l, 0);
+    top: var(--t, 0);
+    width: var(--w, 100%);
+    height: var(--h, 100%);
+    border-radius: 1px;
+    background: var(--b, var(--folder-inner));
+  }
+  
+  .continue-application > div .folder:before {
+    box-shadow: 0 1.5px 3px var(--shadow), 0 2.5px 5px var(--shadow), 0 3.5px 7px var(--shadow);
+    transform: translateX(var(--fx, 0));
+    transition: transform 0.4s ease var(--fd, 0.3s);
+  }
+  
+  .continue-application > div .folder:after,
+  .continue-application > div .folder .paper {
+    --l: 1px;
+    --t: 1px;
+    --w: 21px;
+    --h: 25px;
+    --b: var(--paper-behind);
+  }
+  
+  .continue-application > div .folder:after {
+    transform: translate(var(--pbx, 0), var(--pby, 0));
+    transition: transform 0.4s ease var(--pbd, 0s);
+  }
+  
+  .continue-application > div .folder .paper {
+    z-index: 1;
+    --b: var(--paper);
+  }
+  
+  .continue-application > div .folder .paper:before, .continue-application > div .folder .paper:after {
+    content: "";
+    width: var(--wp, 14px);
+    height: 2px;
+    border-radius: 1px;
+    transform: scaleY(0.5);
+    left: 3px;
+    top: var(--tp, 3px);
+    position: absolute;
+    background: var(--paper-lines);
+    box-shadow: 0 12px 0 0 var(--paper-lines), 0 24px 0 0 var(--paper-lines);
+  }
+  
+  .continue-application > div .folder .paper:after {
+    --tp: 6px;
+    --wp: 10px;
+  }
+  
+  .continue-application > div .pencil {
+    height: 2px;
+    width: 3px;
+    border-radius: 1px 1px 0 0;
+    top: 8px;
+    left: 105%;
+    position: absolute;
+    z-index: 3;
+    transform-origin: 50% 19px;
+    background: var(--pencil-cap);
+    transform: translateX(var(--pex, 0)) rotate(35deg);
+    transition: transform 0.4s ease var(--pbd, 0s);
+  }
+  
+  .continue-application > div .pencil:before, .continue-application > div .pencil:after {
+    content: "";
+    position: absolute;
+    display: block;
+    background: var(--b, linear-gradient(var(--pencil-top) 55%, var(--pencil-middle) 55.1%, var(--pencil-middle) 60%, var(--pencil-bottom) 60.1%));
+    width: var(--w, 5px);
+    height: var(--h, 20px);
+    border-radius: var(--br, 2px 2px 0 0);
+    top: var(--t, 2px);
+    left: var(--l, -1px);
+  }
+  
+  .continue-application > div .pencil:before {
+    -webkit-clip-path: polygon(0 5%, 5px 5%, 5px 17px, 50% 20px, 0 17px);
+    clip-path: polygon(0 5%, 5px 5%, 5px 17px, 50% 20px, 0 17px);
+  }
+  
+  .continue-application > div .pencil:after {
+    --b: none;
+    --w: 3px;
+    --h: 6px;
+    --br: 0 2px 1px 0;
+    --t: 3px;
+    --l: 3px;
+    border-top: 1px solid var(--pencil-top);
+    border-right: 1px solid var(--pencil-top);
+  }
+  
+  .continue-application:before, .continue-application:after {
+    content: ">";
+    position: absolute;
+    font-size: 3rem;
+    border-radius: 1px;
+    transform-origin: 9px 1px;
+    transform: scale(0.5) translate(-50%, -50%);
+    top: 50%;
+    right: 0;
+    transition: transform 0.1s;
+  }
+  
+  .continue-application:hover:after {
+    transform:translate(-50%, -50%);
+    font-size: 3rem;
+}
+
+  .continue-application:hover::before {
+    transform: translate(-120%, -50%);
+    font-size: 3.5rem;
+  }
+
+
+  
+  .continue-application:hover {
+    --cx: 2px;
+    --bg: var(--background-hover);
+    --fx: -60px;
+    --fr: -60deg;
+    --fd: .15s;
+    --fds: 0s;
+    --pbx: 3px;
+    --pby: -3px;
+    --pbd: .15s;
+    --pex: -24px;
+  }
+
+
+
+
+
+
+
+head-text {
+    position: relative;
+    border-bottom: 1px solid #fff;
+    padding-left: 1rem;
+
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: start;
+
+    z-index: 999999;
+}
+
+head-text .bigTitle {
+    font-family: GilroyBold;
+    font-size: 40px;
+    background: linear-gradient(90.4deg, #1a76ff 0.2%, rgba(26, 99, 255, 0.74) 99.85%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-top: 0.5rem;
+    text-align: center;
+}
+
+head-text .littleTitle {
+    position: relative;
+    font-family: GilroyMedium;
+    font-size: 15px;
+    line-height: 25px;
+    letter-spacing: 1px;
+    color: rgba(255,255,255,1);
+    text-align: center;
+}
+
+
+/* QUESTINS */
+
+strong {
+    color: red;
+    text-shadow: 0 0 15px red;
+}
+
+.container {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+
+    display: grid;
+    place-items: center;
+}
+
+
+.container .question_container {
+    position: relative;
+    
+    width: 500px;
+    height: 400px;
+    padding: 0.5rem;
+    border-radius: 10px;
+    
+    background: radial-gradient(50% 50% at 50% 50%, rgb(7, 35, 77) 0%, rgb(0, 0, 0) 100%);
+    border: 2px solid rgb(16, 60, 126);
+    
+    display: grid;
+    grid-gap: 1rem;
+    grid-template-rows: 25% 50% 25%;
+}
+
+
+.big-icon-back {
+    position: absolute;
+
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    
+    color: rgba(255,255,255,0.03);
+    font-size: 25rem;
+    z-index: 1;
+}
+
+.container .question_container .information {
+    position: relative;
+    
+    text-align: center;
+    color: #fff;
+    font-size: 1rem;
+    font-family: GilroyMedium;
+    letter-spacing: 1px;
+    z-index: 5;
+
+}
+
+.container .question_container button {
+    position: relative;
+    width: 100%;
+    height: 70%;
+    border: none;
+    outline: none;
+    border-radius: 10px;
+    background: rgba(26, 99, 255, 0.74);
+    color: #fff;
+    font-size: 2rem;
+    font-family: GilroyMedium;
+    cursor: pointer;
+    transition: 0.2s ease-in-out;
+    z-index: 5;
+}
+
+.container .question_container button:hover {
+    background: #1a76ff;
+}
+
+
+.container .question_container button:active {
+    background: #03419e;
+}
+
+
+
+
+/* Tasks */
+
+.container .task_container {
+    position: relative;
+    
+    width: 800px;
+    min-height: 400px;
+    padding: 0.5rem;
+    border-radius: 10px;
+    
+    background: radial-gradient(50% 50% at 50% 50%, rgb(7, 35, 77) 0%, rgb(0, 0, 0) 100%);
+    border: 2px solid rgb(16, 94, 211);
+    
+    display: grid;
+    grid-template-rows: 25% 60% 15%;
+}
+
+
+header {
+    position: relative;
+    border-bottom: 1px solid #fff;
+    padding-left: 1rem;
+
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: start;
+    text-transform: uppercase;
+
+    z-index: 999999;
+}
+
+header .bigTitle {
+    font-family: GilroyBold;
+    font-size: 40px;
+    background: linear-gradient(90.4deg, #1a76ff 0.2%, rgba(26, 99, 255, 0.74) 99.85%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-top: 0.5rem;
+    text-align: center;
+}
+
+header .littleTitle {
+    position: relative;
+    font-family: GilroyMedium;
+    font-size: 15px;
+    line-height: 25px;
+    letter-spacing: 1px;
+    color: rgba(255,255,255,1);
+    text-align: center;
+}
+
+
+.container .task_container .questions {
+    position: relative;
+    
+    color: #fff;
+    font-size: 1rem;
+    font-family: GilroyMedium;
+    letter-spacing: 1px;
+    padding: 0 1rem;
+    z-index: 5;
+
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    gap: 0.3rem;
+}
+
+.container .task_container .questions h1 {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+}
+
+.container .task_container .questions label {
+    text-align: left;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.container .task_container .questions label input {
+    position: relative;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    background: #fff;
+    border-radius: 10px;
+    border: 2px solid transparent;
+
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+
+    transition: 0.2s all ease-in-out;
+}
+
+.container .task_container .questions label input:checked {
+    border: 2px solid #1a76ff;
+}
+
+.container .task_container .questions label input::before {
+    content: '';
+    position: absolute;
+
+    width: 80%;
+    height: 80%;
+    border-radius: 100%;
+
+    opacity: 0;
+    background: #1a76ff;
+    transform: scale(0.8);
+    transition: 0.2s all ease-in-out;
+}
+
+.container .task_container .questions label input:checked::before {
+    opacity: 1;
+    transform: scale(1);
+}
+
+
+.container .task_container button {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    border: none;
+    outline: none;
+    border-radius: 10px;
+    background: rgba(26, 99, 255, 0.74);
+    color: #fff;
+    font-size: 2rem;
+    font-family: GilroyMedium;
+    cursor: pointer;
+    transition: 0.2s ease-in-out;
+    z-index: 5;
+}
+
+
+.container .task_container button:hover {
+    background: #1a76ff;
+}
+
+
+.container .task_container button:active {
+    background: #03419e;
+}
+
+.container .task_container.expand {
+    grid-template-rows: 25% 15% 40%;
+}
+
+.container .task_container .grund {
+    position: relative;
+
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    color: #fff;
+    width: 80%;
+    text-align: center;
+
+    font-family: GilroyMedium;
+    letter-spacing: 1px;
+}
+
+.container .task_container .grund a {
+    color: #FF1A35;
+    text-decoration: none;
+    z-index: 5;
+}
