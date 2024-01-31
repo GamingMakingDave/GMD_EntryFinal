@@ -1,10 +1,10 @@
 Full Entry-System for German servers FREE
 
-- Perfromanter zu DNZ Einreise und standalone
+- Performanter zu DNZ Einreise und standalone
 - Full Open Source
-- Custom Cutscene kein MP4 Videos mit nil CharSkin
+- Custom Cutscene kein MP4 Videos mit eigenen Skin des spielers
 
-Regelwerkabfrage mit Custom NUI @Oli kann deaktiviert werden! und full anpassbar.
+Regelwerk abfrage mit Custom NUI von @Oli kann in der config.js deaktiviert werden! und full anpassbar farblich und Textfont.
 
 !!!rename GMD_EntryFinal to GMD_Entry!!!
 
