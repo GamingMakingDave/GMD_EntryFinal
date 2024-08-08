@@ -1,6 +1,30 @@
 ESX = exports['es_extended']:getSharedObject()
 Dimension = Config.BasicEntryDimension
-
+if ESX then
+    RegisterNetEvent('esx:playerLoaded', function(player, xPlayer, isNew)
+    if isNew then
+        xPlayer.triggerEvent("GMD_Entry:PlayerIsNew")
+        return
+    end
+    identifier = xPlayer.getIdentifier()
+    MySQL.query("SELECT `entry_type`, `entry_duration`, `entry_dimension` FROM `users` WHERE IDENTIFIER = ? LIMIT 1", {identifier},
+        function(result)
+            row = result[1]
+            if row.entry_dimension == Config.BasicEntryDimension then
+                local Dimension = row.entry_dimension
+                SetPlayerRoutingBucket(xPlayer.source, Dimension)
+                if Config.DebugMode then
+                    print(Dimension)
+                end
+                
+            end
+            print(row.entry_type)
+                if row.entry_type == nil or row.entry_type == false then
+                    xPlayer.triggerEvent("GMD_Entry:PlayerIsNew")
+                end
+        end)
+end)
+else
 AddEventHandler('playerConnecting', function(playerName, setKickReason, deferrals)
     local source = source
     local license = GetPlayerIdentifierByType(source, 'license')
@@ -50,6 +74,7 @@ AddEventHandler('playerConnecting', function(playerName, setKickReason, deferral
         end
     end)
 end)
+end
 
 CreateThread(function()
     MySQL.query("SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = 'users' AND COLUMN_NAME = 'entry_isnew';", {}, function(response)

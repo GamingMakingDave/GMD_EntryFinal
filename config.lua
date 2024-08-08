@@ -14,7 +14,9 @@ Config.BanTime = {
     minutes = 60,
     seconds = 60
 }
-
+Config.EntryPlayerCommand = "entryplayer"
+Config.EnterEntryCommand = "enterentry"
+Config.ExitEntryCommand = "exitentry"
 -- entry dimension
 Config.BasicEntryDimension = 1 -- If another script uses dimensions (SetPlayerRoutingBucket), it must be changed to a free dimension.
 

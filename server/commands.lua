@@ -20,7 +20,7 @@ if Config.DebugMode then
     end, false)
 end
 
-RegisterCommand("enterentry", function(source, args, rawCommand)
+RegisterCommand(Config.EnterEntryCommand, function(source, args, rawCommand)
     if IsPlayerAceAllowed(source, "gmd.entry") or Config.DebugMode then
         if CheckCommandValid({'illegal', 'legal'}, args[1]) and CheckCommandValid({'admin1', 'admin2'}, args[2]) then
             EntryType = args[1]
@@ -43,7 +43,7 @@ RegisterCommand("enterentry", function(source, args, rawCommand)
     end
 end, false)
 
-RegisterCommand("exitentry", function(source, args, rawCommand)
+RegisterCommand(Config.ExitEntryCommand, function(source, args, rawCommand)
     if IsPlayerAceAllowed(source, "gmd.entry") or Config.DebugMode then
         SaveAdminCoords('Remove', source)
     else
@@ -55,7 +55,7 @@ RegisterCommand("exitentry", function(source, args, rawCommand)
     end
 end, false)
 
-RegisterCommand("playerentry", function(source, args, rawCommand)
+RegisterCommand(Config.EntryPlayerCommand, function(source, args, rawCommand)
     if IsPlayerAceAllowed(source, "gmd.entry") or Config.DebugMode then
         local playerid = tonumber(args[1])
         if playerid ~= nil then

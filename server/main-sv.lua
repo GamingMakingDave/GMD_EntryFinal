@@ -50,6 +50,7 @@ AddEventHandler('GMD_Entry:PlayerEntry', function(playerid)
                 ['@entry_dimension'] = 0,
                 ['@identifier'] = xPlayer.getIdentifier()
             }, function(rowsChanged)
+ SetPlayerRoutingBucket(playerid, 0)
                 if rowsChanged > 0 then
                     TriggerClientEvent('GMD_Entry:FinishedEntryTeleport', playerid, entryType)
                 else
